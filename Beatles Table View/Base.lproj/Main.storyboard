@@ -68,6 +68,7 @@
                                         <connections>
                                             <outlet property="ivAlbum" destination="T3I-cH-0LJ" id="6ld-Pi-bmd"/>
                                             <outlet property="lblAlbumName" destination="AZW-pq-yoQ" id="y8o-g2-0wc"/>
+                                            <segue destination="t8s-JY-uLo" kind="show" identifier="SongSegue" id="Zdg-zJ-SEX"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -93,7 +94,98 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-481.15942028985512" y="77.678571428571431"/>
+            <point key="canvasLocation" x="-730" y="78"/>
+        </scene>
+        <!--Song View Controller-->
+        <scene sceneID="wkf-o9-esd">
+            <objects>
+                <viewController id="t8s-JY-uLo" customClass="SongViewController" customModule="Beatles_Table_View" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Io3-Sg-98p">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wSA-Wd-Hqi">
+                                <rect key="frame" x="10" y="98" width="394" height="394"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wSA-Wd-Hqi" secondAttribute="height" multiplier="1:1" id="vF5-lp-gzz"/>
+                                </constraints>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="By5-YS-WRO">
+                                <rect key="frame" x="0.0" y="502" width="414" height="360"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SongCell" rowHeight="72" id="iFh-sg-4Lm" customClass="SongTableViewCell" customModule="Beatles_Table_View" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="72"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iFh-sg-4Lm" id="rOR-64-zWb">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="She Came In Through The Bathroom Window" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vbi-3u-miy">
+                                                    <rect key="frame" x="20" y="11" width="374" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track: 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEo-6V-r0E">
+                                                    <rect key="frame" x="36" y="40.5" width="61.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:32" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aoZ-6l-kqc">
+                                                    <rect key="frame" x="359" y="40.5" width="35" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Vbi-3u-miy" firstAttribute="leading" secondItem="rOR-64-zWb" secondAttribute="leadingMargin" id="43i-Xf-zbb"/>
+                                                <constraint firstItem="vEo-6V-r0E" firstAttribute="top" secondItem="Vbi-3u-miy" secondAttribute="bottom" constant="8" id="5Qo-Pa-70x"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Vbi-3u-miy" secondAttribute="trailing" id="9v9-8W-xiE"/>
+                                                <constraint firstItem="vEo-6V-r0E" firstAttribute="centerY" secondItem="aoZ-6l-kqc" secondAttribute="centerY" id="M69-DC-hy9"/>
+                                                <constraint firstItem="aoZ-6l-kqc" firstAttribute="trailing" secondItem="rOR-64-zWb" secondAttribute="trailingMargin" id="Nyf-cB-GDj"/>
+                                                <constraint firstItem="aoZ-6l-kqc" firstAttribute="bottom" secondItem="rOR-64-zWb" secondAttribute="bottomMargin" id="Qei-q5-G1j"/>
+                                                <constraint firstItem="Vbi-3u-miy" firstAttribute="top" secondItem="rOR-64-zWb" secondAttribute="topMargin" id="THg-Sm-ZS0"/>
+                                                <constraint firstItem="vEo-6V-r0E" firstAttribute="bottom" secondItem="rOR-64-zWb" secondAttribute="bottomMargin" id="Y2W-fI-Ei0"/>
+                                                <constraint firstItem="aoZ-6l-kqc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vEo-6V-r0E" secondAttribute="trailing" constant="8" symbolic="YES" id="ahJ-Ox-Gpa"/>
+                                                <constraint firstItem="vEo-6V-r0E" firstAttribute="leading" secondItem="rOR-64-zWb" secondAttribute="leadingMargin" constant="16" id="mkF-am-eQ8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblTime" destination="aoZ-6l-kqc" id="Y0N-tM-qhb"/>
+                                            <outlet property="lblTitle" destination="Vbi-3u-miy" id="71a-T2-9uh"/>
+                                            <outlet property="lblTrackNumber" destination="vEo-6V-r0E" id="3Tw-CP-Lm3"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="t8s-JY-uLo" id="iFZ-D6-3vq"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="By5-YS-WRO" firstAttribute="leading" secondItem="6iC-7T-xIs" secondAttribute="leading" id="5tv-Ad-uBF"/>
+                            <constraint firstItem="wSA-Wd-Hqi" firstAttribute="top" secondItem="6iC-7T-xIs" secondAttribute="top" constant="10" id="8H7-GN-jk3"/>
+                            <constraint firstItem="6iC-7T-xIs" firstAttribute="trailing" secondItem="wSA-Wd-Hqi" secondAttribute="trailing" constant="10" id="D3S-Q7-vWJ"/>
+                            <constraint firstItem="By5-YS-WRO" firstAttribute="top" secondItem="wSA-Wd-Hqi" secondAttribute="bottom" constant="10" id="Lvh-Mi-rDO"/>
+                            <constraint firstItem="6iC-7T-xIs" firstAttribute="trailing" secondItem="By5-YS-WRO" secondAttribute="trailing" id="NXe-2J-sQl"/>
+                            <constraint firstItem="wSA-Wd-Hqi" firstAttribute="leading" secondItem="6iC-7T-xIs" secondAttribute="leading" constant="10" id="cNC-yu-X95"/>
+                            <constraint firstItem="6iC-7T-xIs" firstAttribute="bottom" secondItem="By5-YS-WRO" secondAttribute="bottom" id="fWB-Fz-FTl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6iC-7T-xIs"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="J9i-Kg-YXA"/>
+                    <connections>
+                        <outlet property="ivAlbumCover" destination="wSA-Wd-Hqi" id="AAL-xs-ga9"/>
+                        <outlet property="songTableView" destination="By5-YS-WRO" id="eDK-ND-IfF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lyi-SL-b01" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="184.05797101449278" y="81.696428571428569"/>
         </scene>
     </scenes>
 </document>
