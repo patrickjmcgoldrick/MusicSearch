@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_Beatles_Table_View_Beatles_Table_ViewUITests : NSObject
+@end
+@implementation PodsDummy_Pods_Beatles_Table_View_Beatles_Table_ViewUITests
+@end

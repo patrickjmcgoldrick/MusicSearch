@@ -16,6 +16,7 @@ struct Result : Codable, Equatable {
     var collectionName : String
     var trackName : String?
     var artworkUrl100 : String?
+    var collectionId : Int
     
     // conform to Equatable protocol
     // use this to thin to a list of unique 'collectionName' rows

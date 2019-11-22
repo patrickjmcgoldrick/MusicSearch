@@ -1,0 +1,6 @@
+framework module Pods_Beatles_Table_View {
+  umbrella header "Pods-Beatles Table View-umbrella.h"
+
+  export *
+  module * { export * }
+}

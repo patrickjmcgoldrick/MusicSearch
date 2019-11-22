@@ -87,6 +87,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Beatles" id="12c-9F-p7D"/>
+                    <connections>
+                        <outlet property="tableView" destination="uMH-XM-Ify" id="Nfc-Y9-kVD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

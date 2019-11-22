@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     var uniqueResults : [Result]?
+    var allResults : [Result]?
     
     var beatles = ["John", "Paul", "George", "Ringo"]
     
@@ -23,42 +27,56 @@ class ViewController: UIViewController {
 
     func parseJSONinBackground() {
 
-        guard let artistJsonPath = Bundle.main.path(forResource: "beatles", ofType: "json") else { print ("failed to load file."); return }
+        // create filesystem path
+        guard let artistJsonPath = Bundle.main.path(forResource: "beatles", ofType: "json") else { print ("Failed to load file."); return }
         
         
-        let url = NSURL.fileURL(withPath: artistJsonPath)// else { print ("invalid URL"); return }
-
-        print (url)
+        // convert into URL
+        let url = NSURL.fileURL(withPath: artistJsonPath)
         
+        // background the loading / parsing elements
         DispatchQueue.global().async {
 
             do {
+                // load json into Data object
                 let data = try Data(contentsOf: url)
+                
+                // create decoder
                 let jsonDecoder = JSONDecoder()
 
+                // decode json into structs
                 let albumData = try jsonDecoder.decode(AlbumData.self, from: data)
                 
+                // save track rows for detail view
+                self.allResults = albumData.results
+                
+                // filter for only the albums
                 self.uniqueResults = albumData.results.reduce([], {
                     $0.contains($1) ? $0 : $0 + [$1]
                 })
+                
             } catch {
-                print (error.localizedDescription)
+                print ("Error Parsing JSON: \(error.localizedDescription)")
             }
 
             DispatchQueue.main.async {
-                print(self.uniqueResults?.count)
-                print(self.uniqueResults!)
-
+                self.tableView.reloadData()
             }
+            
         }
-     }
-
-    
-
+    }
 }
 
 extension ViewController : UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectedCollectionId = uniqueResults?[indexPath.row].collectionId
+        
+        let tracksInCollection = allResults?.filter { $0.collectionId == selectedCollectionId }            
+        print ("rows: \(tracksInCollection)")
+        
+    }
 }
 
 extension ViewController : UITableViewDataSource {
@@ -73,6 +91,9 @@ extension ViewController : UITableViewDataSource {
         
         cell.lblAlbumName.text = uniqueResults?[indexPath.row].collectionName ?? ""
         
+        if let imageUrl = uniqueResults?[indexPath.row].artworkUrl100 {
+            cell.ivAlbum.sd_setImage(with: URL(string: imageUrl))
+        }
         return cell
     }
     

@@ -1,0 +1,6 @@
+framework module Pods_Beatles_Table_View_Beatles_Table_ViewUITests {
+  umbrella header "Pods-Beatles Table View-Beatles Table ViewUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
