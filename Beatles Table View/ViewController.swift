@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         let url = NSURL.fileURL(withPath: artistJsonPath)
         
         // background the loading / parsing elements
-        DispatchQueue.global().async {
+        DispatchQueue.global(qos: .background).async {
 
             do {
                 // load json into Data object
