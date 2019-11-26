@@ -19,6 +19,7 @@ struct Result : Codable, Equatable {
     var collectionId : Int
     var trackNumber : Int?
     var trackTimeMillis : Int?
+    var previewUrl : String?
     
     // conform to Equatable protocol
     // use this to thin to a list of unique 'collectionName' rows
